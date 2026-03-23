@@ -1,0 +1,28 @@
+services:
+  moodle:
+    image: moodlehq/moodle-php-apache:8.3
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ../moodledata:/var/moodledata
+    depends_on:
+      - mariadb
+    environment:
+      - MOODLE_DB_HOST=mariadb
+      - MOODLE_DB_NAME=moodle
+      - MOODLE_DB_USER=moodleuser
+      - MOODLE_DB_PASSWORD=moodlepass
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_DATABASE=moodle
+      - MYSQL_USER=moodleuser
+      - MYSQL_PASSWORD=moodlepass
+    volumes:
+      - dbdata:/var/lib/mysql
+
+volumes:
+  dbdata:
