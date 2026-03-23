@@ -2779,7 +2779,7 @@ CREATE TABLE `mdl_cache_flags` (
   PRIMARY KEY (`id`),
   KEY `mdl_cachflag_fla_ix` (`flagtype`),
   KEY `mdl_cachflag_nam_ix` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='Cache of time-sensitive flags';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='Cache of time-sensitive flags';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2790,13 +2790,18 @@ SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `mdl_cache_flags` WRITE;
 /*!40000 ALTER TABLE `mdl_cache_flags` DISABLE KEYS */;
 INSERT INTO `mdl_cache_flags` VALUES
-(1,'userpreferenceschanged','2',1774270253,'1',1774299053),
+(1,'userpreferenceschanged','2',1774272479,'1',1774301279),
 (2,'accesslib/dirtyusers','2',1774268768,'1',1774297568),
 (3,'userpreferenceschanged','3',1774270145,'1',1774298945),
 (4,'userpreferenceschanged','4',1774270323,'1',1774299123),
 (5,'userpreferenceschanged','5',1774270396,'1',1774299196),
 (6,'userpreferenceschanged','6',1774270441,'1',1774299241),
-(7,'userpreferenceschanged','7',1774270487,'1',1774299287);
+(7,'userpreferenceschanged','7',1774270487,'1',1774299287),
+(8,'accesslib/dirtyusers','7',1774272515,'1',1774301315),
+(9,'accesslib/dirtyusers','4',1774272515,'1',1774301315),
+(10,'accesslib/dirtyusers','5',1774272515,'1',1774301315),
+(11,'accesslib/dirtyusers','6',1774272515,'1',1774301315),
+(12,'accesslib/dirtyusers','3',1774272515,'1',1774301315);
 /*!40000 ALTER TABLE `mdl_cache_flags` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -8860,7 +8865,7 @@ INSERT INTO `mdl_config_plugins` VALUES
 (1903,'enrol_ldap','user_type','default'),
 (1904,'enrol_ldap','opt_deref','0'),
 (1905,'enrol_ldap','idnumber_attribute',''),
-(1906,'enrol_ldap','objectclass',''),
+(1906,'enrol_ldap','objectclass','(objectClass=*)'),
 (1907,'enrol_ldap','course_idnumber',''),
 (1908,'enrol_ldap','course_shortname',''),
 (1909,'enrol_ldap','course_fullname',''),
@@ -15578,7 +15583,7 @@ CREATE TABLE `mdl_logstore_standard_log` (
   KEY `mdl_logsstanlog_cou_ix` (`courseid`),
   KEY `mdl_logsstanlog_rea_ix` (`realuserid`),
   KEY `mdl_logsstanlog_rel_ix` (`relateduserid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1227 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='Standard log table';
+) ENGINE=InnoDB AUTO_INCREMENT=1258 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='Standard log table';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -16814,7 +16819,38 @@ INSERT INTO `mdl_logstore_standard_log` VALUES
 (1223,'\\core\\event\\config_log_created','core','created','config_log','config_log',1859,'c',0,1,10,0,2,0,NULL,0,'{\"name\":\"siteadmins\",\"oldvalue\":\"2, 3\",\"value\":\"2, 3, 7, 4, 5, 6\",\"plugin\":\"core\"}',1774270497,'web','192.168.65.1',NULL),
 (1224,'\\core\\event\\dashboard_viewed','core','viewed','dashboard',NULL,NULL,'r',0,5,30,2,2,0,2,0,'null',1774270514,'web','192.168.65.1',NULL),
 (1225,'\\core\\event\\dashboard_viewed','core','viewed','dashboard',NULL,NULL,'r',0,5,30,2,2,0,2,0,'null',1774270523,'web','192.168.65.1',NULL),
-(1226,'\\core\\event\\dashboard_viewed','core','viewed','dashboard',NULL,NULL,'r',0,5,30,2,2,0,2,0,'null',1774270530,'web','192.168.65.1',NULL);
+(1226,'\\core\\event\\dashboard_viewed','core','viewed','dashboard',NULL,NULL,'r',0,5,30,2,2,0,2,0,'null',1774270530,'web','192.168.65.1',NULL),
+(1227,'\\core\\event\\dashboard_viewed','core','viewed','dashboard',NULL,NULL,'r',0,5,30,2,2,0,2,0,'null',1774270598,'web','192.168.65.1',NULL),
+(1228,'\\core\\event\\dashboard_viewed','core','viewed','dashboard',NULL,NULL,'r',0,5,30,2,2,0,2,0,'null',1774270663,'web','192.168.65.1',NULL),
+(1229,'\\core\\event\\dashboard_viewed','core','viewed','dashboard',NULL,NULL,'r',0,5,30,2,2,0,2,0,'null',1774270665,'web','192.168.65.1',NULL),
+(1230,'\\core\\event\\dashboard_viewed','core','viewed','dashboard',NULL,NULL,'r',0,5,30,2,2,0,2,0,'null',1774272367,'web','172.21.0.1',NULL),
+(1231,'\\core\\event\\dashboard_viewed','core','viewed','dashboard',NULL,NULL,'r',0,5,30,2,2,0,2,0,'null',1774272409,'web','172.21.0.1',NULL),
+(1232,'\\core\\event\\course_viewed','core','viewed','course',NULL,NULL,'r',2,16,50,2,2,2,NULL,0,'null',1774272411,'web','172.21.0.1',NULL),
+(1233,'\\core\\event\\course_viewed','core','viewed','course',NULL,NULL,'r',2,16,50,2,2,2,NULL,0,'null',1774272412,'web','172.21.0.1',NULL),
+(1234,'\\core\\event\\dashboard_viewed','core','viewed','dashboard',NULL,NULL,'r',0,5,30,2,2,0,2,0,'null',1774272444,'web','172.21.0.1',NULL),
+(1235,'\\core\\event\\course_viewed','core','viewed','course',NULL,NULL,'r',2,16,50,2,2,2,NULL,0,'null',1774272450,'web','172.21.0.1',NULL),
+(1236,'\\gradereport_grader\\event\\grade_report_viewed','gradereport_grader','viewed','grade_report',NULL,NULL,'r',1,16,50,2,2,2,NULL,0,'null',1774272477,'web','172.21.0.1',NULL),
+(1237,'\\tool_usertours\\event\\tour_started','tool_usertours','started','tour','tool_usertours_tours',1,'r',2,16,50,2,2,2,NULL,0,'{\"pageurl\":\"http:\\/\\/localhost:8080\\/grade\\/report\\/grader\\/index.php?id=2\"}',1774272477,'web','172.21.0.1',NULL),
+(1238,'\\tool_usertours\\event\\tour_ended','tool_usertours','ended','tour','tool_usertours_tours',1,'c',2,16,50,2,2,2,NULL,0,'{\"pageurl\":\"http:\\/\\/localhost:8080\\/grade\\/report\\/grader\\/index.php?id=2\",\"stepid\":1,\"stepindex\":0}',1774272479,'web','172.21.0.1',NULL),
+(1239,'\\core\\event\\user_list_viewed','core','viewed','user_list','course',2,'r',0,16,50,2,2,2,NULL,0,'{\"courseshortname\":\"COMP101\",\"coursefullname\":\"Compliance Training\"}',1774272484,'web','172.21.0.1',NULL),
+(1240,'\\core\\event\\user_enrolment_created','core','created','user_enrolment','user_enrolments',2,'c',0,16,50,2,2,2,7,0,'{\"enrol\":\"manual\"}',1774272515,'web','172.21.0.1',NULL),
+(1241,'\\core\\event\\email_failed','core','failed','email',NULL,NULL,'c',0,1,10,0,2,0,7,0,'{\"subject\":\"Welcome to Compliance Training\",\"message\":\"Hi sanjana, you are enrolled in the course Compliance Training.\",\"errorinfo\":\"Invalid address:  (From): noreply@localhost\"}',1774272515,'web','172.21.0.1',NULL),
+(1242,'\\core\\event\\role_assigned','core','assigned','role','role',5,'c',0,16,50,2,2,2,7,0,'{\"id\":2,\"component\":\"\",\"itemid\":0}',1774272515,'web','172.21.0.1',NULL),
+(1243,'\\core\\event\\user_enrolment_created','core','created','user_enrolment','user_enrolments',3,'c',0,16,50,2,2,2,4,0,'{\"enrol\":\"manual\"}',1774272515,'web','172.21.0.1',NULL),
+(1244,'\\core\\event\\email_failed','core','failed','email',NULL,NULL,'c',0,1,10,0,2,0,4,0,'{\"subject\":\"Welcome to Compliance Training\",\"message\":\"Hi chenglin, you are enrolled in the course Compliance Training.\",\"errorinfo\":\"Invalid address:  (From): noreply@localhost\"}',1774272515,'web','172.21.0.1',NULL),
+(1245,'\\core\\event\\role_assigned','core','assigned','role','role',5,'c',0,16,50,2,2,2,4,0,'{\"id\":3,\"component\":\"\",\"itemid\":0}',1774272515,'web','172.21.0.1',NULL),
+(1246,'\\core\\event\\user_enrolment_created','core','created','user_enrolment','user_enrolments',4,'c',0,16,50,2,2,2,5,0,'{\"enrol\":\"manual\"}',1774272515,'web','172.21.0.1',NULL),
+(1247,'\\core\\event\\email_failed','core','failed','email',NULL,NULL,'c',0,1,10,0,2,0,5,0,'{\"subject\":\"Welcome to Compliance Training\",\"message\":\"Hi seeya, you are enrolled in the course Compliance Training.\",\"errorinfo\":\"Invalid address:  (From): noreply@localhost\"}',1774272515,'web','172.21.0.1',NULL),
+(1248,'\\core\\event\\role_assigned','core','assigned','role','role',5,'c',0,16,50,2,2,2,5,0,'{\"id\":4,\"component\":\"\",\"itemid\":0}',1774272515,'web','172.21.0.1',NULL),
+(1249,'\\core\\event\\user_enrolment_created','core','created','user_enrolment','user_enrolments',5,'c',0,16,50,2,2,2,6,0,'{\"enrol\":\"manual\"}',1774272515,'web','172.21.0.1',NULL),
+(1250,'\\core\\event\\email_failed','core','failed','email',NULL,NULL,'c',0,1,10,0,2,0,6,0,'{\"subject\":\"Welcome to Compliance Training\",\"message\":\"Hi eileen, you are enrolled in the course Compliance Training.\",\"errorinfo\":\"Invalid address:  (From): noreply@localhost\"}',1774272515,'web','172.21.0.1',NULL),
+(1251,'\\core\\event\\role_assigned','core','assigned','role','role',5,'c',0,16,50,2,2,2,6,0,'{\"id\":5,\"component\":\"\",\"itemid\":0}',1774272515,'web','172.21.0.1',NULL),
+(1252,'\\core\\event\\user_enrolment_created','core','created','user_enrolment','user_enrolments',6,'c',0,16,50,2,2,2,3,0,'{\"enrol\":\"manual\"}',1774272515,'web','172.21.0.1',NULL),
+(1253,'\\core\\event\\email_failed','core','failed','email',NULL,NULL,'c',0,1,10,0,2,0,3,0,'{\"subject\":\"Welcome to Compliance Training\",\"message\":\"Hi chun, you are enrolled in the course Compliance Training.\",\"errorinfo\":\"Invalid address:  (From): noreply@localhost\"}',1774272515,'web','172.21.0.1',NULL),
+(1254,'\\core\\event\\role_assigned','core','assigned','role','role',5,'c',0,16,50,2,2,2,3,0,'{\"id\":6,\"component\":\"\",\"itemid\":0}',1774272515,'web','172.21.0.1',NULL),
+(1255,'\\gradereport_grader\\event\\grade_report_viewed','gradereport_grader','viewed','grade_report',NULL,NULL,'r',1,16,50,2,2,2,NULL,0,'null',1774272520,'web','172.21.0.1',NULL),
+(1256,'\\core\\event\\course_overview_viewed','core','viewed','course_overview',NULL,NULL,'r',2,16,50,2,2,2,NULL,0,'null',1774272530,'web','172.21.0.1',NULL),
+(1257,'\\mod_lesson\\event\\course_module_instance_list_viewed','mod_lesson','viewed','course_module_instance_list',NULL,NULL,'r',0,16,50,2,2,2,NULL,0,'null',1774272533,'web','172.21.0.1',NULL);
 /*!40000 ALTER TABLE `mdl_logstore_standard_log` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -17517,7 +17553,7 @@ CREATE TABLE `mdl_message_popup_notifications` (
   `notificationid` bigint(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `mdl_messpopunoti_not_ix` (`notificationid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='List of notifications to display in the message output popup';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='List of notifications to display in the message output popup';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -17527,6 +17563,12 @@ CREATE TABLE `mdl_message_popup_notifications` (
 SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `mdl_message_popup_notifications` WRITE;
 /*!40000 ALTER TABLE `mdl_message_popup_notifications` DISABLE KEYS */;
+INSERT INTO `mdl_message_popup_notifications` VALUES
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5);
 /*!40000 ALTER TABLE `mdl_message_popup_notifications` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -18369,7 +18411,7 @@ CREATE TABLE `mdl_notifications` (
   KEY `mdl_noti_tim_ix` (`timecreated`),
   KEY `mdl_noti_tim2_ix` (`timeread`),
   KEY `mdl_noti_use2_ix` (`useridto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='Stores all notifications';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='Stores all notifications';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -18379,6 +18421,12 @@ CREATE TABLE `mdl_notifications` (
 SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `mdl_notifications` WRITE;
 /*!40000 ALTER TABLE `mdl_notifications` DISABLE KEYS */;
+INSERT INTO `mdl_notifications` VALUES
+(1,2,7,'Welcome to Compliance Training','Hi sanjana, you are enrolled in the course Compliance Training.',4,'Hi sanjana, you are enrolled in the course Compliance Training.',NULL,'moodle','enrolcoursewelcomemessage','http://localhost:8080/user/view.php?id=7&amp;course=2','Compliance Training',NULL,1774272515,NULL),
+(2,2,4,'Welcome to Compliance Training','Hi chenglin, you are enrolled in the course Compliance Training.',4,'Hi chenglin, you are enrolled in the course Compliance Training.',NULL,'moodle','enrolcoursewelcomemessage','http://localhost:8080/user/view.php?id=4&amp;course=2','Compliance Training',NULL,1774272515,NULL),
+(3,2,5,'Welcome to Compliance Training','Hi seeya, you are enrolled in the course Compliance Training.',4,'Hi seeya, you are enrolled in the course Compliance Training.',NULL,'moodle','enrolcoursewelcomemessage','http://localhost:8080/user/view.php?id=5&amp;course=2','Compliance Training',NULL,1774272515,NULL),
+(4,2,6,'Welcome to Compliance Training','Hi eileen, you are enrolled in the course Compliance Training.',4,'Hi eileen, you are enrolled in the course Compliance Training.',NULL,'moodle','enrolcoursewelcomemessage','http://localhost:8080/user/view.php?id=6&amp;course=2','Compliance Training',NULL,1774272515,NULL),
+(5,2,3,'Welcome to Compliance Training','Hi chun, you are enrolled in the course Compliance Training.',4,'Hi chun, you are enrolled in the course Compliance Training.',NULL,'moodle','enrolcoursewelcomemessage','http://localhost:8080/user/view.php?id=3&amp;course=2','Compliance Training',NULL,1774272515,NULL);
 /*!40000 ALTER TABLE `mdl_notifications` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -21677,7 +21725,7 @@ CREATE TABLE `mdl_role_assignments` (
   KEY `mdl_roleassi_rol_ix` (`roleid`),
   KEY `mdl_roleassi_con_ix` (`contextid`),
   KEY `mdl_roleassi_use_ix` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='assigning roles in different context';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='assigning roles in different context';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -21688,7 +21736,12 @@ SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `mdl_role_assignments` WRITE;
 /*!40000 ALTER TABLE `mdl_role_assignments` DISABLE KEYS */;
 INSERT INTO `mdl_role_assignments` VALUES
-(1,3,16,2,1774268768,2,'',0,0);
+(1,3,16,2,1774268768,2,'',0,0),
+(2,5,16,7,1774272515,2,'',0,0),
+(3,5,16,4,1774272515,2,'',0,0),
+(4,5,16,5,1774272515,2,'',0,0),
+(5,5,16,6,1774272515,2,'',0,0),
+(6,5,16,3,1774272515,2,'',0,0);
 /*!40000 ALTER TABLE `mdl_role_assignments` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -23970,7 +24023,7 @@ SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `mdl_sessions` WRITE;
 /*!40000 ALTER TABLE `mdl_sessions` DISABLE KEYS */;
 INSERT INTO `mdl_sessions` VALUES
-(2,0,'8462d2465cec61f29fd716d5c5b0641e',2,NULL,1774268292,1774270530,'192.168.65.1','192.168.65.1');
+(2,0,'8462d2465cec61f29fd716d5c5b0641e',2,NULL,1774268292,1774272515,'192.168.65.1','172.21.0.1');
 /*!40000 ALTER TABLE `mdl_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -24804,7 +24857,7 @@ SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `mdl_tiny_autosave` WRITE;
 /*!40000 ALTER TABLE `mdl_tiny_autosave` DISABLE KEYS */;
 INSERT INTO `mdl_tiny_autosave` VALUES
-(3,'id_summary_editor',16,'1fd6f205713f5731fe9d2ba3c0ab3a76640bce3f',2,'',271870961,'0079ff597a4d1c1eef2baa34aab99d04',1774269348);
+(3,'id_summary_editor',16,'1fd6f205713f5731fe9d2ba3c0ab3a76640bce3f',2,'',451982330,'d1340fd8083112440494636684d2aa1f',1774272469);
 /*!40000 ALTER TABLE `mdl_tiny_autosave` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -27516,7 +27569,7 @@ LOCK TABLES `mdl_user` WRITE;
 /*!40000 ALTER TABLE `mdl_user` DISABLE KEYS */;
 INSERT INTO `mdl_user` VALUES
 (1,'manual',1,0,0,0,1,'guest','$6$rounds=10000$FVV0V9xzp5SLwljE$iOxXMVYNX3GDKKxjVyVWdmE6IP1RD8bnAK0dzBu8mcnI3jdxvcPVJVlTcs6WHOdfoHtFWyRfjwBWCCmjDUHQA1','','Guest user',' ','root@localhost',0,'','','','','','','','en','gregorian','','99',0,0,0,0,'','',0,'This user is a special user that allows read-only access to some courses.',1,1,0,2,1,0,0,1774268214,0,NULL,NULL,NULL,NULL,NULL),
-(2,'manual',1,0,0,0,1,'admin','$6$rounds=10000$N0oBaxRJvB1Wvjdf$XsIpUnPofEeLICG/VkIbdc8xBT7YwEPBUN6GunznudBjIvgjDBwDnbUCfONPWPzaHWXs4dgtx2I8LgH.9PsB/.','','Admin','User','jiayingkam0811@gmail.com',0,'','','','','','','SG','en','gregorian','','Asia/Singapore',1774268292,1774270505,0,1774268292,'192.168.65.1','',0,'',1,1,0,1,1,0,0,1774269098,0,'','','','',''),
+(2,'manual',1,0,0,0,1,'admin','$6$rounds=10000$N0oBaxRJvB1Wvjdf$XsIpUnPofEeLICG/VkIbdc8xBT7YwEPBUN6GunznudBjIvgjDBwDnbUCfONPWPzaHWXs4dgtx2I8LgH.9PsB/.','','Admin','User','jiayingkam0811@gmail.com',0,'','','','','','','SG','en','gregorian','','Asia/Singapore',1774268292,1774272520,0,1774268292,'172.21.0.1','',0,'',1,1,0,1,1,0,0,1774269098,0,'','','','',''),
 (3,'manual',1,0,0,0,1,'chunwai','$6$rounds=10000$AalxYScxzkVXFWL1$fiN5qNP61W2GbIAfG7FNgkXaBEyu9wHYCyl72Pp.UzHPlr5bWaw2bddhC3EdIgt7CTWe2iQjb5UXEftf1ZI2b1','','chun','wai','chunwai.yit.2024@computing.smu.edu.sg',0,'','','','','','','SG','en','gregorian','','Asia/Singapore',0,0,0,0,'','',0,'',1,1,0,2,1,0,1774270145,1774270145,0,'','','','',''),
 (4,'manual',1,0,0,0,1,'chenglin','$6$rounds=10000$J90sQFFRgjRhtcIn$.q.OaU5NpbwGvgCLOhOxxo/O4vWzeCi83iEPaMbtw8vyARdlmuMs9CEysoNKehWbhZksC.qdICPUWW0DlzJe50','','chenglin','ju','chenglin.ju.2023@scis.smu.edu.sg',0,'','','','','','','SG','en','gregorian','','Asia/Singapore',0,0,0,0,'','',0,'',1,1,0,2,1,0,1774270323,1774270323,0,'','','','',''),
 (5,'manual',1,0,0,0,1,'seeya','$6$rounds=10000$/XUCNG83pixnqACc$4nDic.SkUOzVZ7gVrW25dD3CSfCZHBwabP31zjUt14weuvCpzzuSVsA2YJ/eMyBaoS1xA9HPN4ySX5mSGEvoK0','','seeya','m','seeya.m.2024@computing.smu.edu.sg',0,'','','','','','','SG','en','gregorian','','Asia/Singapore',0,0,0,0,'','',0,'',1,1,0,2,1,0,1774270396,1774270396,0,'','','','',''),
@@ -27588,7 +27641,7 @@ CREATE TABLE `mdl_user_enrolments` (
   KEY `mdl_userenro_enr_ix` (`enrolid`),
   KEY `mdl_userenro_use_ix` (`userid`),
   KEY `mdl_userenro_mod_ix` (`modifierid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='Users participating in courses (aka enrolled users) - everyb';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='Users participating in courses (aka enrolled users) - everyb';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -27599,7 +27652,12 @@ SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `mdl_user_enrolments` WRITE;
 /*!40000 ALTER TABLE `mdl_user_enrolments` DISABLE KEYS */;
 INSERT INTO `mdl_user_enrolments` VALUES
-(1,0,1,2,0,0,2,1774268768,1774268768);
+(1,0,1,2,0,0,2,1774268768,1774268768),
+(2,0,1,7,1774272499,0,2,1774272515,1774272515),
+(3,0,1,4,1774272499,0,2,1774272515,1774272515),
+(4,0,1,5,1774272499,0,2,1774272515,1774272515),
+(5,0,1,6,1774272499,0,2,1774272515,1774272515),
+(6,0,1,3,1774272499,0,2,1774272515,1774272515);
 /*!40000 ALTER TABLE `mdl_user_enrolments` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -27733,7 +27791,7 @@ SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `mdl_user_lastaccess` WRITE;
 /*!40000 ALTER TABLE `mdl_user_lastaccess` DISABLE KEYS */;
 INSERT INTO `mdl_user_lastaccess` VALUES
-(1,2,2,1774269339);
+(1,2,2,1774272477);
 /*!40000 ALTER TABLE `mdl_user_lastaccess` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -27813,7 +27871,7 @@ CREATE TABLE `mdl_user_preferences` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_userpref_usenam_uix` (`userid`,`name`),
   KEY `mdl_userpref_nam_ix` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='Allows modules to store arbitrary user preferences';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPRESSED COMMENT='Allows modules to store arbitrary user preferences';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -27849,7 +27907,10 @@ INSERT INTO `mdl_user_preferences` VALUES
 (23,6,'email_send_count','1'),
 (24,7,'auth_forcepasswordchange','0'),
 (25,7,'email_bounce_count','1'),
-(26,7,'email_send_count','1');
+(26,7,'email_send_count','1'),
+(27,2,'ifirst',''),
+(28,2,'ilast',''),
+(29,2,'tool_usertours_tour_completion_time_1','1774272479');
 /*!40000 ALTER TABLE `mdl_user_preferences` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -28650,4 +28711,4 @@ SET AUTOCOMMIT=@OLD_AUTOCOMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2026-03-23 12:55:44
+-- Dump completed on 2026-03-23 13:29:17
