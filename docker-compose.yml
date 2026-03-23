@@ -23,6 +23,7 @@ services:
       - MYSQL_PASSWORD=moodlepass
     volumes:
       - dbdata:/var/lib/mysql
+      - ./moodle_dump.sql:/docker-entrypoint-initdb.d/moodle_dump.sql
 
 volumes:
   dbdata:
