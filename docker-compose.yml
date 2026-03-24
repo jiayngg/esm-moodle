@@ -1,10 +1,10 @@
 services:
   moodle:
-    image: moodlehq/moodle-php-apache:8.3
+    build: .
+    image: jiaying0811/esm-moodle:latest
     ports:
       - "8080:80"
     volumes:
-      - .:/var/www/html
       - ../moodledata:/var/moodledata
     depends_on:
       - mariadb
