@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: moodledata-pvc
+  namespace: moodle
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moodle
+  namespace: moodle
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moodle
+  template:
+    metadata:
+      labels:
+        app: moodle
+    spec:
+      initContainers:
+        - name: fix-permissions
+          image: busybox
+          command: ["sh", "-c", "mkdir -p /var/moodledata && chmod 777 /var/moodledata"]
+          volumeMounts:
+            - name: moodledata-storage
+              mountPath: /var/moodledata
+      containers:
+        - name: moodle
+          image: jiaying0811/esm-moodle:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: MOODLE_DB_HOST
+              value: mariadb
+            - name: MOODLE_DB_NAME
+              value: moodle
+            - name: MOODLE_DB_USER
+              value: moodleuser
+            - name: MOODLE_DB_PASSWORD
+              value: moodlepass
+          volumeMounts:
+            - name: moodledata-storage
+              mountPath: /var/moodledata
+      volumes:
+        - name: moodledata-storage
+          persistentVolumeClaim:
+            claimName: moodledata-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moodle
+  namespace: moodle
+spec:
+  type: LoadBalancer
+  selector:
+    app: moodle
+  ports:
+    - port: 80
+      targetPort: 80
